@@ -185,3 +185,26 @@ console.log(nameScore("MUBASHIR"));
 console.log(nameScore("YOU"));
 console.log(nameScore("MATT"));
 console.log(nameScore("PUBG"));
+
+//question 8
+"use strict"
+const inputItmes = [
+  {name: "Jack", pets: ["cat"]},
+  {name: "Jill", pets: ["dog", "cat"]},
+  {name: "Sally", pets: ["cat", "fish"]},
+]
+  const transFormObj =(arr)=>{
+      //   create animal array ["cat", "dog", "fish"]
+  const animalArr =  [...new Set(arr.reduce((animalArr, value)=>animalArr.concat(value.pets),[]))];
+//  create object { cat: [], dog: [], fish: [] } to store name
+  const animalObj=animalArr.reduce((animalObj, value)=>{animalObj[value]=[];return animalObj},{});
+  //for loop to push name to be value of object
+    for(let i=0;i<arr.length; i++){
+     for(let j=0;j<animalArr.length;j++){
+      if(arr[i].pets.includes(animalArr[j])){
+          animalObj[animalArr[j]].push(arr[i].name);
+      } }}
+    return animalObj;
+}
+console.log(transFormObj(inputItmes));
+
